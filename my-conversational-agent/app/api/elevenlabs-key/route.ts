@@ -24,7 +24,10 @@ export async function GET() {
       );
     }
     
-    console.log(`Using agent ID: ${agentId}`);
+    // Get the specific voice ID to use
+    const voiceId = process.env.ELEVENLABS_VOICE_ID || '2k1RrkiAltTGNFiT6rL1';
+    
+    console.log(`Using agent ID: ${agentId} and voice ID: ${voiceId}`);
     
     // For authenticated agents, get a signed URL - with voice stability parameters
     console.log('Fetching signed URL from ElevenLabs API');
@@ -32,8 +35,10 @@ export async function GET() {
     // Voice stability parameters to prevent voice switching
     const queryParams = new URLSearchParams({
       agent_id: agentId,
+      voice_id: voiceId, // Use the specific voice ID
       // These parameters help ensure voice consistency
-      stability: '0.8',  // Higher stability = more consistent voice
+      stability: '0.95',  // Higher stability = more consistent voice (increased from 0.8)
+      similarity_boost: '1.0', // Maximum similarity
       consistency: 'high' // Request high consistency in the voice
     }).toString();
 
@@ -46,8 +51,8 @@ export async function GET() {
           'Content-Type': 'application/json',
           // Additional headers to request consistent voice
           'xi-voice-settings': JSON.stringify({
-            stability: 0.8,
-            similarity_boost: 0.9,
+            stability: 0.95,
+            similarity_boost: 1.0,
             use_speaker_boost: true
           })
         }
