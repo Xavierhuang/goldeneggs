@@ -152,47 +152,37 @@ export function Conversation() {
 
   const sendTextMessage = useCallback(async () => {
     if (!textInput.trim() || conversation.status !== 'connected' || isSending) return;
-    
     try {
       setIsSending(true);
-      
-      // Add the user message to the chat immediately for better UX
       const messageText = textInput.trim();
       addMessage(messageText, 'user');
-      
-      // Clear the input
       setTextInput('');
-      
-      // Send the message to our API endpoint
-      console.log('Sending text message to API:', messageText);
-      
-      const response = await fetch('/api/text-message', {
+
+      // Prepare conversation history for OpenAI
+      const chatHistory = messages.map((msg) => ({
+        role: msg.sender === 'user' ? 'user' : 'assistant',
+        content: msg.text,
+      }));
+      chatHistory.push({ role: 'user', content: messageText });
+
+      // Send to OpenAI chat API
+      const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: messageText })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: chatHistory }),
       });
-      
       const data = await response.json();
-      
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Failed to send message');
+      if (!response.ok || !data.text) {
+        throw new Error(data.error || 'Failed to get response from AI');
       }
-      
-      // If the API returned a response message, add it to the chat
-      if (data.response && data.response.text) {
-        addMessage(data.response.text, 'ai');
-      }
-      
-      console.log('Text message processed successfully');
+      addMessage(data.text, 'ai');
       setIsSending(false);
     } catch (error) {
       console.error('Failed to send text message:', error);
       setError(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}`);
       setIsSending(false);
     }
-  }, [textInput, conversation, isSending]);
+  }, [textInput, conversation, isSending, messages]);
 
   // Handle Enter key press in the text input
   const handleKeyDown = (e: React.KeyboardEvent) => {
