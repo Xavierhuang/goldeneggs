@@ -223,15 +223,14 @@ export function Conversation() {
           <div className="flex items-center">
             <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 border-2 border-white shadow-sm">
               <Image 
-                src="/images/professor.jpg" 
-                alt="Professor James Brusseau" 
+                src="/images/jesus.jpg" 
+                alt="Bible Guide" 
                 fill
                 className="object-cover" 
               />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-semibold">Professor James Brusseau</h3>
-              <p className="text-xs text-blue-100">Ethics in the Workplace</p>
+              <h3 className="text-base sm:text-lg font-semibold">Bible Guide</h3>
             </div>
           </div>
           
@@ -262,8 +261,8 @@ export function Conversation() {
           {messages.length === 0 ? (
             <div className="text-center text-gray-500 py-12">
               {conversation.status === 'connected' 
-                ? 'Conversation started. Speak to interact with Professor Brusseau.'
-                : 'Start the conversation to begin chatting with Professor Brusseau.'}
+                ? 'Conversation started. Speak to interact with Bible Guide.'
+                : 'Start the conversation to begin chatting with Bible Guide.'}
             </div>
           ) : (
             messages.map((msg) => (
@@ -274,8 +273,8 @@ export function Conversation() {
                 {msg.sender === 'ai' && (
                   <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden mr-2 self-end flex-shrink-0">
                     <Image 
-                      src="/images/professor.jpg" 
-                      alt="Professor James Brusseau" 
+                      src="/images/jesus.jpg" 
+                      alt="Bible Guide" 
                       fill
                       className="object-cover" 
                     />
