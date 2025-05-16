@@ -90,21 +90,22 @@ export function NarrationProvider({
     updatePromptSuggestion();
   }, [currentPage]);
   
-  // Fetch signed URL for the agent
+  // Fetch signed URL for the storybook agent
   const fetchSignedUrl = async () => {
     try {
-      const response = await fetch('/api/elevenlabs-key');
+      // Use the dedicated storybook agent endpoint
+      const response = await fetch('/api/storybook-agent');
       const data = await response.json();
       
       if (!data.success || !data.signedUrl) {
-        throw new Error(data.error || 'Failed to get agent configuration');
+        throw new Error(data.error || 'Failed to get storybook agent configuration');
       }
       
       setSignedUrl(data.signedUrl);
       return data.signedUrl;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      setError(`Failed to get agent URL: ${errorMessage}`);
+      setError(`Failed to get storybook agent URL: ${errorMessage}`);
       throw error;
     }
   };

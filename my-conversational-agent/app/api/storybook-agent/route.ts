@@ -13,25 +13,24 @@ export async function GET() {
       );
     }
     
-    // Define the Bible agent ID - hardcoded to ensure it doesn't change
-    const bibleAgentId = 'IkA9bFZpZJWvRNQV6XlN';
+    // Define the storybook agent ID - hardcoded to ensure it doesn't change
+    const storybookAgentId = 'OtzZI3d84fVcTtEhO5Lf';
     
     // Get the specific voice ID to use
-    const voiceId = process.env.ELEVENLABS_VOICE_ID || '2k1RrkiAltTGNFiT6rL1';
+    const voiceId = process.env.STORYBOOK_VOICE_ID || '2k1RrkiAltTGNFiT6rL1';
     
-    console.log(`Using Bible agent ID: ${bibleAgentId} and voice ID: ${voiceId}`);
+    console.log(`Using storybook agent ID: ${storybookAgentId} and voice ID: ${voiceId}`);
     
-    // For authenticated agents, get a signed URL - with voice stability parameters
-    console.log('Fetching signed URL from ElevenLabs API');
+    // For authenticated agents, get a signed URL
+    console.log('Fetching signed URL for storybook agent from ElevenLabs API');
 
-    // Voice stability parameters to prevent voice switching
+    // Voice stability parameters
     const queryParams = new URLSearchParams({
-      agent_id: bibleAgentId,
-      voice_id: voiceId, // Use the specific voice ID
-      // These parameters help ensure voice consistency
-      stability: '0.95',  // Higher stability = more consistent voice (increased from 0.8)
-      similarity_boost: '1.0', // Maximum similarity
-      consistency: 'high' // Request high consistency in the voice
+      agent_id: storybookAgentId,
+      voice_id: voiceId,
+      stability: '0.95',
+      similarity_boost: '1.0',
+      consistency: 'high'
     }).toString();
 
     const response = await fetch(
@@ -41,7 +40,6 @@ export async function GET() {
         headers: {
           'xi-api-key': apiKey,
           'Content-Type': 'application/json',
-          // Additional headers to request consistent voice
           'xi-voice-settings': JSON.stringify({
             stability: 0.95,
             similarity_boost: 1.0,
@@ -51,7 +49,6 @@ export async function GET() {
       }
     );
     
-    // Check if the response is OK
     if (!response.ok) {
       console.error('ElevenLabs API error:', {
         status: response.status,
@@ -67,10 +64,8 @@ export async function GET() {
       );
     }
     
-    // Parse the response data
     const data = await response.json();
     
-    // Check if data is valid
     if (!data || !data.signed_url) {
       console.error('No signed URL returned from ElevenLabs API');
       return NextResponse.json(
@@ -82,9 +77,8 @@ export async function GET() {
       );
     }
     
-    console.log('Successfully obtained signed URL');
+    console.log('Successfully obtained signed URL for storybook agent');
     
-    // Return success with signed URL only - no additional fields that might interfere
     return NextResponse.json({
       signedUrl: data.signed_url,
       success: true
