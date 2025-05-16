@@ -1,6 +1,7 @@
 import React from 'react';
 import { Conversation } from './components/conversation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -18,6 +19,13 @@ export default function Home() {
               />
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-2 sm:mb-3">Chat with Bible Guide</h1>
+            
+            <Link 
+              href="/storybook" 
+              className="mt-2 px-4 py-2 bg-green-500 text-white rounded-md shadow hover:bg-green-600 transition-colors"
+            >
+              Interactive Storybook: The Cat in the Hat
+            </Link>
           </header>
           
           <div className="w-full bg-white rounded-xl shadow-md overflow-hidden">
