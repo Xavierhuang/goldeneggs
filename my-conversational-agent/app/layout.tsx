@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Chat with Bible Guide",
-  description: "Ask questions and chat with the Bible Guide at chatwithgods.com. Get answers, guidance, and inspiration from the Bible.",
+  title: "AI Masterclass",
+  description: "Explore interactive AI-powered learning experiences with multiple conversational agents including Bible Guide, Storybook Narration, and Philosophy discussions.",
   openGraph: {
-    title: "Chat with Bible Guide",
-    description: "Ask questions and chat with the Bible Guide at chatwithgods.com. Get answers, guidance, and inspiration from the Bible.",
+    title: "AI Masterclass",
+    description: "Explore interactive AI-powered learning experiences with multiple conversational agents including Bible Guide, Storybook Narration, and Philosophy discussions.",
     url: "https://chatwithgods.com",
-    siteName: "ChatWithGods",
+    siteName: "AI Masterclass",
     images: [
       {
         url: "/images/jesus.jpg",
