@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { getSubscribers } from '@/app/lib/db';
+import { getSubscribers, setSubscriberPaid } from '@/app/lib/db';
 
 export async function GET() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const isLoggedIn = cookieStore.get('admin_session')?.value === 'true';
 
   if (!isLoggedIn) {
@@ -25,7 +25,7 @@ export async function GET() {
 }
 
 export async function PATCH(request: Request) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const isLoggedIn = cookieStore.get('admin_session')?.value === 'true';
 
   if (!isLoggedIn) {
