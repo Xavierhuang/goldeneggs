@@ -2,6 +2,7 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import { useConversation } from '@11labs/react';
 import Image from 'next/image';
+import { EmailSignupModal } from './email-signup-modal';
 
 type Message = {
   id: string;
@@ -19,6 +20,7 @@ export function Conversation() {
   const [isSending, setIsSending] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [showEmailSignup, setShowEmailSignup] = useState(false);
   
   const conversation = useConversation({
     onConnect: () => {
@@ -144,6 +146,7 @@ export function Conversation() {
       setDebugInfo('Ending conversation...');
       await conversation.endSession();
       console.log('Conversation ended');
+      setShowEmailSignup(true);
     } catch (error) {
       console.error('Failed to end conversation:', error);
       setDebugInfo(`Error ending conversation: ${JSON.stringify(error)}`);
@@ -189,6 +192,23 @@ export function Conversation() {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendTextMessage();
+    }
+  };
+
+  const handleEmailSubmit = async (email: string) => {
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to subscribe');
+      }
+    } catch (error) {
+      console.error('Failed to submit email:', error);
+      throw error;
     }
   };
 
@@ -349,6 +369,12 @@ export function Conversation() {
       </div>
       
       <div ref={messagesEndRef} />
+
+      <EmailSignupModal
+        isOpen={showEmailSignup}
+        onClose={() => setShowEmailSignup(false)}
+        onSubmit={handleEmailSubmit}
+      />
     </div>
   );
 } 

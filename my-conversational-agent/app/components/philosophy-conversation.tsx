@@ -2,6 +2,7 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import { useConversation } from '@11labs/react';
 import Image from 'next/image';
+import { EmailSignupModal } from './email-signup-modal';
 
 type Message = {
   id: string;
@@ -19,6 +20,7 @@ export function PhilosophyConversation() {
   const [isSending, setIsSending] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [showEmailSignup, setShowEmailSignup] = useState(false);
   
   const conversation = useConversation({
     onConnect: () => {
@@ -138,6 +140,7 @@ export function PhilosophyConversation() {
       setDebugInfo('Ending conversation...');
       await conversation.endSession();
       console.log('Conversation ended');
+      setShowEmailSignup(true);
     } catch (error) {
       console.error('Failed to end conversation:', error);
       setDebugInfo(`Error ending conversation: ${JSON.stringify(error)}`);
@@ -186,8 +189,25 @@ export function PhilosophyConversation() {
     }
   };
 
+  const handleEmailSubmit = async (email: string) => {
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to subscribe');
+      }
+    } catch (error) {
+      console.error('Failed to submit email:', error);
+      throw error;
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center w-full mx-auto">
+    <div className="flex flex-col h-full">
       {error && (
         <div className="text-red-500 mb-2 w-full p-3 bg-red-50 rounded-lg text-center font-medium border border-red-200">
           {error}
@@ -326,6 +346,12 @@ export function PhilosophyConversation() {
           )}
         </div>
       </div>
+      
+      <EmailSignupModal
+        isOpen={showEmailSignup}
+        onClose={() => setShowEmailSignup(false)}
+        onSubmit={handleEmailSubmit}
+      />
     </div>
   );
 } 

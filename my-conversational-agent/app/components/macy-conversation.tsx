@@ -2,6 +2,9 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import { useConversation } from '@11labs/react';
 import Image from 'next/image';
+import { EmailSignupModal } from './email-signup-modal';
+import { LoginModal } from './login-modal';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 type Message = {
   id: string;
@@ -19,6 +22,11 @@ export function MacyConversation() {
   const [isSending, setIsSending] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [showEmailSignup, setShowEmailSignup] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [endCount, setEndCount] = useState(0);
+  const [showPaywall, setShowPaywall] = useState(false);
   
   const conversation = useConversation({
     onConnect: () => {
@@ -138,11 +146,19 @@ export function MacyConversation() {
       setDebugInfo('Ending conversation...');
       await conversation.endSession();
       console.log('Conversation ended');
+      setEndCount(prev => prev + 1);
+      if (!userEmail) setShowEmailSignup(true);
     } catch (error) {
       console.error('Failed to end conversation:', error);
       setDebugInfo(`Error ending conversation: ${JSON.stringify(error)}`);
     }
-  }, [conversation]);
+  }, [conversation, userEmail]);
+
+  useEffect(() => {
+    if (endCount >= 2) {
+      setShowPaywall(true);
+    }
+  }, [endCount]);
 
   const sendTextMessage = useCallback((text: string) => {
     try {
@@ -179,8 +195,39 @@ export function MacyConversation() {
     }
   }, [conversation, addMessage]);
 
+  const handleEmailSubmit = async (email: string) => {
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to subscribe');
+      }
+    } catch (error) {
+      console.error('Failed to submit email:', error);
+      throw error;
+    }
+  };
+
+  const handleLogin = () => {
+    if (typeof document !== 'undefined') {
+      const raw = document.cookie.split('; ').find(row => row.startsWith('user_email='))?.split('=')[1];
+      setUserEmail(raw ? decodeURIComponent(raw) : null);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const raw = document.cookie.split('; ').find(row => row.startsWith('user_email='))?.split('=')[1];
+      setUserEmail(raw ? decodeURIComponent(raw) : null);
+    }
+  }, []);
+
   return (
-    <div className="flex flex-col items-center w-full mx-auto">
+    <div className="flex flex-col h-full">
       {error && (
         <div className="text-red-500 mb-2 w-full p-3 bg-red-50 rounded-lg text-center font-medium border border-red-200">
           {error}
@@ -316,6 +363,66 @@ export function MacyConversation() {
           </p>
         </div>
       </div>
+      
+      <EmailSignupModal
+        isOpen={showEmailSignup}
+        onClose={() => setShowEmailSignup(false)}
+        onSubmit={handleEmailSubmit}
+      />
+      
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+        onLogin={handleLogin}
+      />
+      {showPaywall && <UpgradePaywall onSuccess={() => setShowPaywall(false)} />}
     </div>
+  );
+}
+
+export function UpgradePaywall({ onSuccess }: { onSuccess?: () => void }) {
+  return (
+    <PayPalScriptProvider 
+      options={{ 
+        clientId: "ATuKUAWX4u2U0X16_rb1dm2-waoKc8mIHTS53jFQvTKbvJkEr99OlCzrR_b898omVh8q0t__BeNoPmFH",
+        components: "buttons",
+        enableFunding: "venmo",
+        currency: "USD"
+      }}
+    >
+      <div className="p-8 text-center text-lg text-gray-700">
+        <p>Your free trial is over. Please upgrade to continue using this service.</p>
+        <PayPalButtons
+          style={{
+            layout: "vertical",
+            shape: "rect",
+            label: "pay"
+          }}
+          createOrder={(data, actions) => {
+            return actions.order.create({
+              intent: "CAPTURE",
+              purchase_units: [
+                {
+                  amount: {
+                    currency_code: "USD",
+                    value: "9.99"
+                  }
+                }
+              ]
+            });
+          }}
+          onApprove={async (data, actions) => {
+            if (actions.order) {
+              const order = await actions.order.capture();
+              console.log("Order completed:", order);
+              onSuccess?.();
+            }
+          }}
+          onError={(err) => {
+            console.error("PayPal error:", err);
+          }}
+        />
+      </div>
+    </PayPalScriptProvider>
   );
 } 

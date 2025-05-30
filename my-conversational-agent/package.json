@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@11labs/react": "^0.1.4",
+    "@paypal/react-paypal-js": "^8.8.3",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/better-sqlite3": "^7.6.13",
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^11.10.0",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
