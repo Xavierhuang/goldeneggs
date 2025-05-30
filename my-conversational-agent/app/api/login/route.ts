@@ -18,12 +18,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid email or password' }, { status: 401 });
     }
     // Set a session cookie
-    cookies().set('user_email', email, {
-      httpOnly: false,
-      maxAge: 60 * 60 * 24 * 30,
+    const response = NextResponse.json({ success: true });
+
+    response.cookies.set('admin_session', 'true', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
       path: '/',
+      maxAge: 60 * 60 * 24, // 1 day
     });
-    return NextResponse.json({ success: true });
+
+    return response;
   } catch (error) {
     return NextResponse.json({ error: 'Login failed' }, { status: 500 });
   }
