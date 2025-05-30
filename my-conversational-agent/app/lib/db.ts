@@ -21,6 +21,13 @@ db.exec(`
   )
 `);
 
+export interface Subscriber {
+  id: number;
+  email: string;
+  password_hash: string | null;
+  created_at: string;
+}
+
 export function addSubscriber(email: string, passwordHash?: string | null) {
   try {
     const stmt = db.prepare('INSERT INTO subscribers (email, password_hash) VALUES (?, ?)');
@@ -39,9 +46,9 @@ export function getSubscribers() {
   return stmt.all();
 }
 
-export function getSubscriberByEmail(email: string) {
+export function getSubscriberByEmail(email: string): Subscriber | undefined {
   const stmt = db.prepare('SELECT * FROM subscribers WHERE email = ?');
-  return stmt.get(email);
+  return stmt.get(email) as Subscriber | undefined;
 }
 
 export function setSubscriberPaid(email: string, paid: number) {
