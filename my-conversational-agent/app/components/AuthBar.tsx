@@ -45,7 +45,7 @@ export function AuthBar() {
             onClick={() => {
               if (!userEmail) setShowLoginModal(true);
             }}
-            className="px-4 py-2 bg-black text-white rounded-full mr-2"
+            className="px-4 py-2 bg-[#217a5b] text-white rounded-full mr-2"
           >
             Log in
           </button>
@@ -53,7 +53,7 @@ export function AuthBar() {
             onClick={() => {
               if (!userEmail) setShowSignupModal(true);
             }}
-            className="px-4 py-2 border border-black text-black rounded-full bg-white"
+            className="px-4 py-2 text-black rounded-full bg-white"
           >
             Sign up
           </button>

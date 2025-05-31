@@ -223,9 +223,9 @@ export function EntrepreneurConversation() {
       
       {/* Chat Interface */}
       <div className="w-full mb-4 overflow-hidden rounded-xl border border-gray-200">
-        <div className="bg-gradient-to-r from-green-600 to-green-700 p-3 sm:p-4 flex items-center justify-between text-white">
+        <div className="bg-[#217a5b] p-3 sm:p-4 flex items-center justify-between text-white">
           <div className="flex items-center">
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 border-2 border-white shadow-sm">
+            <div className="relative w-[3.3rem] h-[3.3rem] sm:w-[3.85rem] sm:h-[3.85rem] rounded-full overflow-hidden mr-3 border-2 border-white shadow-sm">
               <Image 
                 src="/images/professorJeremy.jpeg" 
                 alt="Professor Jeremy Kagan" 
@@ -246,7 +246,7 @@ export function EntrepreneurConversation() {
               className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-md shadow-sm ${
                 conversation.status === 'connected' || isLoading
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-white text-green-700 hover:bg-green-50 border border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-300'
+                  : 'bg-white text-[#217a5b] hover:bg-[#e6f4ef] border border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#217a5b]'
               }`}
             >
               {isLoading ? 'Connecting...' : 'Start Conversation'}
