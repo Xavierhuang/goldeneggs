@@ -7,12 +7,12 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-0 bg-[#f3eccb]">
       <div className="w-full max-w-4xl mx-auto">
-        {/* Logo/site name and AuthBar aligned in a row */}
-        <div className="flex items-center justify-between w-full mb-4">
+        {/* Logo/site name and AuthBar aligned in a row, logo left, hamburger right */}
+        <div className="flex flex-row items-center justify-between mb-4 px-2 w-full">
           <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="goldeneggs.ai logo" width={48} height={48} />
-            <span className="text-2xl font-bold text-[#217a5b]" style={{ fontFamily: 'Avenir Next Arabic, sans-serif', fontWeight: 'bold' }}>goldeneggs.ai</span>
-            <span className="ml-2 px-2 py-0.5 text-xs bg-gray-200 rounded text-gray-700 font-semibold">BETA</span>
+            <Image src="/logo.png" alt="goldeneggs.ai logo" width={40} height={40} className="sm:w-12 sm:h-12 w-10 h-10" />
+            <span className="text-xl sm:text-2xl font-bold text-[#217a5b]" style={{ fontFamily: 'Avenir Next Arabic, sans-serif', fontWeight: 'bold' }}>goldeneggs.ai</span>
+            <span className="ml-2 px-2 py-0.5 text-[10px] sm:text-xs bg-gray-200 rounded text-gray-700 font-semibold">BETA</span>
           </div>
           <AuthBar />
         </div>

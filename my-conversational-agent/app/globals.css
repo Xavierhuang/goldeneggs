@@ -33,4 +33,20 @@ body {
   :root {
     --container-padding: 0.75rem;
   }
+  .header-mobile-stack {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+  .header-logo-mobile {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .header-title-mobile {
+    font-size: 1.25rem !important;
+  }
+  .header-badge-mobile {
+    font-size: 10px !important;
+    padding: 0 0.5rem !important;
+  }
 }
