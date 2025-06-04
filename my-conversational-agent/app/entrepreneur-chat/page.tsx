@@ -55,8 +55,12 @@ export default function EntrepreneurChat() {
           </div>
         </div>
       </div>
-      <footer className="w-full bg-[#217a5b] text-[#f3eccb] text-center py-12 text-xl">
-        Copyright Goldeneggs.ai 2025
+      <footer className="w-full bg-[#217a5b] text-[#f3eccb] text-center py-12 text-xl flex flex-col items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center">
+          <a href="/terms" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Terms</a>
+          <a href="/privacy" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Privacy</a>
+          <span className="text-[#f3eccb] text-base">Copyright Goldeneggs.ai 2025</span>
+        </div>
       </footer>
     </main>
   );

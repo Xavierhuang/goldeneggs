@@ -14,6 +14,7 @@ export function EmailSignupModal({ isOpen, onClose, onSubmit, onLoginLink }: Ema
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [agreed, setAgreed] = useState(false);
 
   if (!isOpen) return null;
 
@@ -72,6 +73,22 @@ export function EmailSignupModal({ isOpen, onClose, onSubmit, onLoginLink }: Ema
             placeholder="Create a password (optional)"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4"
           />
+          <div className="flex items-center mb-4">
+            <input
+              type="checkbox"
+              id="terms"
+              checked={agreed}
+              onChange={e => setAgreed(e.target.checked)}
+              className="mr-2"
+              required
+            />
+            <label htmlFor="terms" className="text-sm text-gray-700">
+              I agree to the
+              <a href="/terms" className="underline text-[#217a5b] mx-1" target="_blank">Terms of Service</a>
+              and
+              <a href="/privacy" className="underline text-[#217a5b] mx-1" target="_blank">Privacy Policy</a>
+            </label>
+          </div>
           {error && <div style={{ color: 'red', marginBottom: 8 }}>{error.replace('subscribe', 'sign up').replace('subscribed', 'signed up')}</div>}
           <div className="flex justify-end gap-2">
             <button
@@ -83,7 +100,7 @@ export function EmailSignupModal({ isOpen, onClose, onSubmit, onLoginLink }: Ema
             </button>
             <button
               type="submit"
-              disabled={isSubmitting || !email}
+              disabled={isSubmitting || !email || !agreed}
               className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Signing up...' : 'Sign Up'}

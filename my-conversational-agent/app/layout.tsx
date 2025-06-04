@@ -13,19 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Masterclass",
-  description: "Explore interactive AI-powered learning experiences with multiple conversational agents including Bible Guide, Storybook Narration, and Philosophy discussions.",
+  title: "Goldeneggs",
+  description: "Goldeneggs is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
   openGraph: {
-    title: "AI Masterclass",
-    description: "Explore interactive AI-powered learning experiences with multiple conversational agents including Bible Guide, Storybook Narration, and Philosophy discussions.",
-    url: "https://chatwithgods.com",
-    siteName: "AI Masterclass",
+    title: "Goldeneggs",
+    description: "Goldeneggs is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
+    url: "https://goldeneggs.ai",
+    siteName: "Goldeneggs",
     images: [
       {
-        url: "/images/jesus.jpg",
+        url: "/logo.png",
         width: 400,
         height: 400,
-        alt: "Bible Guide Avatar"
+        alt: "Goldeneggs Logo"
       }
     ],
     type: "website"
