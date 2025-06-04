@@ -6,9 +6,10 @@ interface EmailSignupModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (email: string, password: string) => void;
+  onLoginLink?: () => void;
 }
 
-export function EmailSignupModal({ isOpen, onClose, onSubmit }: EmailSignupModalProps) {
+export function EmailSignupModal({ isOpen, onClose, onSubmit, onLoginLink }: EmailSignupModalProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,9 +52,9 @@ export function EmailSignupModal({ isOpen, onClose, onSubmit }: EmailSignupModal
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-        <h2 className="text-xl font-semibold mb-4">Stay Connected!</h2>
+        <h2 className="text-xl font-semibold mb-4">Sign Up</h2>
         <p className="text-gray-600 mb-4">
-          Subscribe to receive updates about new features and improvements.
+          Sign up to receive updates about new features and improvements.
         </p>
         <form onSubmit={handleSubmit}>
           <input
@@ -71,7 +72,7 @@ export function EmailSignupModal({ isOpen, onClose, onSubmit }: EmailSignupModal
             placeholder="Create a password (optional)"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4"
           />
-          {error && <div style={{ color: 'red', marginBottom: 8 }}>{error}</div>}
+          {error && <div style={{ color: 'red', marginBottom: 8 }}>{error.replace('subscribe', 'sign up').replace('subscribed', 'signed up')}</div>}
           <div className="flex justify-end gap-2">
             <button
               type="button"
@@ -85,10 +86,23 @@ export function EmailSignupModal({ isOpen, onClose, onSubmit }: EmailSignupModal
               disabled={isSubmitting || !email}
               className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Submitting...' : 'Subscribe'}
+              {isSubmitting ? 'Signing up...' : 'Sign Up'}
             </button>
           </div>
         </form>
+        <div className="mt-4 text-center">
+          <span className="text-gray-600 text-sm">Already have an account? </span>
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              if (onLoginLink) onLoginLink();
+            }}
+            className="text-purple-700 hover:underline text-sm font-semibold ml-1"
+          >
+            Log In
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AuthBar } from './components/AuthBar';
+import NewsletterSignupForm from './components/NewsletterSignupForm';
 
 export default function Home() {
   return (
@@ -83,6 +84,23 @@ export default function Home() {
               <Image src="/egg-dot.png" alt="Golden Egg" width={70} height={70} />
             </div>
           </div>
+        </section>
+
+        {/* Simple Newsletter Subscription Section */}
+        <section className="flex flex-col items-center justify-center mb-16 px-2">
+          <div className="flex flex-col items-center w-full max-w-2xl mb-2">
+            <div className="flex flex-row items-center justify-center w-full gap-2">
+              <h2 className="text-4xl font-bold text-[#217a5b] text-center flex-1">Join Us</h2>
+              <div className="hidden sm:block">
+                <Image src="/egg-dot.png" alt="Golden Egg" width={48} height={48} className="ml-2" />
+              </div>
+            </div>
+            <div className="block sm:hidden mt-2">
+              <Image src="/egg-dot.png" alt="Golden Egg" width={48} height={48} />
+            </div>
+          </div>
+          <p className="text-lg text-[#217a5b] mb-6 text-center max-w-2xl">Stay up to date with our journey and get notified when we add new experts</p>
+          <NewsletterSignupForm />
         </section>
       </div>
       <footer className="w-full bg-[#217a5b] text-[#f3eccb] text-center py-12 text-xl">

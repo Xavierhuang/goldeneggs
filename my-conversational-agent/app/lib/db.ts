@@ -21,10 +21,26 @@ db.exec(`
   )
 `);
 
+// Initialize the database with the email_signups table for newsletter signups
+// This is separate from the subscribers table (which is for full user accounts)
+db.exec(`
+  CREATE TABLE IF NOT EXISTS email_signups (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT UNIQUE NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+
 export interface Subscriber {
   id: number;
   email: string;
   password_hash: string | null;
+  created_at: string;
+}
+
+export interface EmailSignup {
+  id: number;
+  email: string;
   created_at: string;
 }
 
@@ -41,8 +57,26 @@ export function addSubscriber(email: string, passwordHash?: string | null) {
   }
 }
 
+export function addEmailSignup(email: string) {
+  try {
+    const stmt = db.prepare('INSERT INTO email_signups (email) VALUES (?)');
+    const result = stmt.run(email);
+    return { success: true, id: result.lastInsertRowid };
+  } catch (error: any) {
+    if (error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
+      return { success: false, error: 'Email already signed up' };
+    }
+    return { success: false, error: error.message };
+  }
+}
+
 export function getSubscribers() {
   const stmt = db.prepare('SELECT * FROM subscribers ORDER BY created_at DESC');
+  return stmt.all();
+}
+
+export function getEmailSignups() {
+  const stmt = db.prepare('SELECT * FROM email_signups ORDER BY created_at DESC');
   return stmt.all();
 }
 

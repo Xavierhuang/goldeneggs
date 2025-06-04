@@ -132,6 +132,10 @@ export function AuthBar() {
         isOpen={showSignupModal}
         onClose={() => setShowSignupModal(false)}
         onSubmit={handleLogin}
+        onLoginLink={() => {
+          setShowSignupModal(false);
+          setShowLoginModal(true);
+        }}
       />
     </div>
   );
