@@ -59,46 +59,46 @@ export async function POST(request: Request) {
 
 // --- NEW: Newsletter signup route ---
 // Place this at the bottom of the file for now (will move to its own file if needed)
-export async function POST_NEWSLETTER(request: Request) {
-  try {
-    const { email } = await request.json();
-    if (!email) {
-      return NextResponse.json(
-        { error: 'Email is required' },
-        { status: 400 }
-      );
-    }
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
-    }
-    // Store in email_signups table
-    const result = addEmailSignup(email);
-    if (!result.success) {
-      if (result.error === 'Email already signed up') {
-        return NextResponse.json(
-          { message: 'Email already signed up', alreadySignedUp: true },
-          { status: 200 }
-        );
-      }
-      return NextResponse.json(
-        { error: result.error },
-        { status: 400 }
-      );
-    }
-    return NextResponse.json(
-      { message: 'Successfully signed up for newsletter!', id: result.id, alreadySignedUp: false },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error('Newsletter signup error:', error);
-    return NextResponse.json(
-      { error: 'Failed to process newsletter signup' },
-      { status: 500 }
-    );
-  }
-} 
+// export async function POST_NEWSLETTER(request: Request) {
+//   try {
+//     const { email } = await request.json();
+//     if (!email) {
+//       return NextResponse.json(
+//         { error: 'Email is required' },
+//         { status: 400 }
+//       );
+//     }
+//     // Basic email validation
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     if (!emailRegex.test(email)) {
+//       return NextResponse.json(
+//         { error: 'Invalid email format' },
+//         { status: 400 }
+//       );
+//     }
+//     // Store in email_signups table
+//     const result = addEmailSignup(email);
+//     if (!result.success) {
+//       if (result.error === 'Email already signed up') {
+//         return NextResponse.json(
+//           { message: 'Email already signed up', alreadySignedUp: true },
+//           { status: 200 }
+//         );
+//       }
+//       return NextResponse.json(
+//         { error: result.error },
+//         { status: 400 }
+//       );
+//     }
+//     return NextResponse.json(
+//       { message: 'Successfully signed up for newsletter!', id: result.id, alreadySignedUp: false },
+//       { status: 200 }
+//     );
+//   } catch (error) {
+//     console.error('Newsletter signup error:', error);
+//     return NextResponse.json(
+//       { error: 'Failed to process newsletter signup' },
+//       { status: 500 }
+//     );
+//   }
+// } 

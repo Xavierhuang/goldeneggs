@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -13,6 +14,8 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   if (!isOpen) return null;
 
@@ -41,42 +44,59 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-        <h2 className="text-xl font-semibold mb-4">Login</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4"
-            required
-          />
+      <div className="bg-[#28776e] rounded-2xl p-10 max-w-lg w-full mx-4 flex flex-col items-center relative" style={{ minWidth: 370 }}>
+        {/* Logo */}
+        <div className="flex flex-col items-center mb-4 w-full">
+          <Image src="/logo.png" alt="goldeneggs logo" width={70} height={70} className="mb-2" />
+          <h2 className="text-4xl font-bold mb-6 text-[#ffe14d] text-center">Login</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4">
+          <div className="flex flex-row gap-4 w-full">
+            <input
+              type="text"
+              value={firstName}
+              onChange={e => setFirstName(e.target.value)}
+              placeholder="First Name"
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
+            />
+            <input
+              type="text"
+              value={lastName}
+              onChange={e => setLastName(e.target.value)}
+              placeholder="Last Name"
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
+            />
+          </div>
+          <div className="w-full relative flex items-center">
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="Enter your email address"
+              className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
+              required
+            />
+            {/* Goose image */}
+            <div className="absolute right-[-60px] top-[-30px] hidden md:block">
+              <Image src="/egg-chicken.png" alt="Goose" width={70} height={70} />
+            </div>
+          </div>
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4"
+            className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
             required
           />
-          {error && <div style={{ color: 'red', marginBottom: 8 }}>{error}</div>}
-          <div className="flex justify-end gap-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isSubmitting || !email || !password}
-              className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? 'Logging in...' : 'Login'}
-            </button>
-          </div>
+          {error && <div className="text-red-500 mb-2 w-full text-center">{error}</div>}
+          <button
+            type="submit"
+            disabled={isSubmitting || !email || !password}
+            className="w-1/2 mx-auto bg-[#ffe14d] text-[#217a5b] font-semibold rounded-full px-8 py-2 shadow hover:bg-yellow-300 transition text-xl mt-4 disabled:opacity-60"
+          >
+            {isSubmitting ? 'Signing up...' : 'Sign up'}
+          </button>
         </form>
       </div>
     </div>
