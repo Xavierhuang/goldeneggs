@@ -78,9 +78,13 @@ export function EntrepreneurConversation() {
     ]);
   };
 
-  // Auto-scroll to the bottom when new messages arrive
+  // Auto-scroll to the bottom only when a new message is added (not on reset)
+  const prevMessagesLength = useRef(0);
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messages.length > prevMessagesLength.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+    prevMessagesLength.current = messages.length;
   }, [messages]);
 
   const startConversation = useCallback(async () => {
@@ -265,16 +269,20 @@ export function EntrepreneurConversation() {
         <div className="h-96 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50" style={{ scrollBehavior: 'smooth' }}>
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center p-4">
-              <div className="text-green-600 mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-gray-700 mb-1">Start Your Entrepreneur Journey</h3>
-              <p className="text-gray-500 max-w-md">
-                Ask Prof. Kagan about startup strategies, business models, 
-                product-market fit, or how to launch your venture with confidence.
-              </p>
+              <img src="/egg-dot.png" alt="Golden Egg" className="w-6 h-6 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-[#217a5b] mb-6">Ask Prof. Kagan about startup strategies, business models, product-market fit, or how to launch your venture with confidence.</h3>
+              <button
+                onClick={startConversation}
+                disabled={conversation.status === 'connected' || isLoading}
+                className={`flex items-center justify-center gap-2 px-8 py-4 mb-4 text-xl font-bold rounded-full shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400
+                  ${conversation.status === 'connected' || isLoading
+                    ? 'bg-yellow-200 text-[#217a5b] cursor-not-allowed'
+                    : 'bg-yellow-300 text-[#217a5b] hover:bg-yellow-400'}`}
+              >
+                Start Conversation
+                <Image src="/speaker.png" alt="Speaker" width={28} height={28} />
+              </button>
+              <p className="text-[#217a5b] text-lg">Free for 5 Minutes</p>
             </div>
           ) : (
             messages.map((msg) => (
@@ -310,40 +318,7 @@ export function EntrepreneurConversation() {
         </div>
         
         <div className="p-3 sm:p-4 border-t border-gray-200 bg-white">
-          <div className="flex items-center">
-            <input
-              type="text"
-              ref={inputRef}
-              value={textInput}
-              onChange={(e) => setTextInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Type a message..."
-              disabled={conversation.status !== 'connected' || isSending}
-              className="flex-grow px-4 py-2 bg-gray-100 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-            />
-            <button
-              onClick={sendTextMessage}
-              disabled={!textInput.trim() || conversation.status !== 'connected' || isSending}
-              className="bg-green-600 text-white px-4 py-2 rounded-r-lg hover:bg-green-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
-            >
-              {isSending ? (
-                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              ) : (
-                <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              )}
-            </button>
-          </div>
-          
-          {conversation.status !== 'connected' && (
-            <p className="text-center text-gray-500 text-xs mt-2">
-              Please start a conversation to begin chatting with Prof. Kagan
-            </p>
-          )}
+          {/* Removed text input and send button for typing */}
         </div>
       </div>
       

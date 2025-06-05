@@ -13,7 +13,6 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="goldeneggs.ai logo" width={40} height={40} className="sm:w-12 sm:h-12 w-10 h-10" />
             <span className="text-xl sm:text-2xl font-bold text-[#217a5b]" style={{ fontFamily: 'Avenir Next Arabic, sans-serif', fontWeight: 'bold' }}>goldeneggs.ai</span>
-            <span className="ml-2 px-2 py-0.5 text-[10px] sm:text-xs bg-gray-200 rounded text-gray-700 font-semibold">BETA</span>
           </div>
           <AuthBar />
         </div>
