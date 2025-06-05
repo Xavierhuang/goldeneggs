@@ -14,8 +14,6 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
 
   if (!isOpen) return null;
 
@@ -44,29 +42,21 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-[#28776e] rounded-2xl p-10 max-w-lg w-full mx-4 flex flex-col items-center relative" style={{ minWidth: 370 }}>
+      <div className="bg-[#28776e] rounded-2xl p-10 pt-24 max-w-lg w-full mx-4 flex flex-col items-center relative" style={{ minWidth: 370 }}>
+        {/* Close button - must be first child for top right positioning */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-yellow-300 focus:outline-none z-10"
+          aria-label="Close"
+        >
+          &times;
+        </button>
         {/* Logo */}
         <div className="flex flex-col items-center mb-4 w-full">
           <Image src="/logo.png" alt="goldeneggs logo" width={70} height={70} className="mb-2" />
           <h2 className="text-4xl font-bold mb-6 text-[#ffe14d] text-center">Login</h2>
         </div>
         <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4">
-          <div className="flex flex-row gap-4 w-full">
-            <input
-              type="text"
-              value={firstName}
-              onChange={e => setFirstName(e.target.value)}
-              placeholder="First Name"
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
-            />
-            <input
-              type="text"
-              value={lastName}
-              onChange={e => setLastName(e.target.value)}
-              placeholder="Last Name"
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
-            />
-          </div>
           <div className="w-full relative flex items-center">
             <input
               type="email"
@@ -95,7 +85,7 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
             disabled={isSubmitting || !email || !password}
             className="w-1/2 mx-auto bg-[#ffe14d] text-[#217a5b] font-semibold rounded-full px-8 py-2 shadow hover:bg-yellow-300 transition text-xl mt-4 disabled:opacity-60"
           >
-            {isSubmitting ? 'Signing up...' : 'Sign up'}
+            {isSubmitting ? 'Logging in...' : 'Log in'}
           </button>
         </form>
       </div>

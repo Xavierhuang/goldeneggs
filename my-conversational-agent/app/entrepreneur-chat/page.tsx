@@ -42,7 +42,14 @@ export default function EntrepreneurChat() {
                 <li>Lecture Slides</li>
                 <li>Recorded Lectures</li>
               </ul>
-              <button className="bg-[#ffe14d] text-[#217a5b] font-bold rounded-md px-6 py-2 shadow hover:bg-yellow-300 transition mb-2">Make your own Digital Twin here</button>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf4ub0gWhBIYV7kyR4FAbvdEKa8X3E43pxd8ZacTsDZZ07dcQ/viewform?usp=header"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#ffe14d] text-[#217a5b] font-bold rounded-md px-6 py-2 shadow hover:bg-yellow-300 transition mb-2 text-center"
+              >
+                Make your own Digital Twin here
+              </a>
             </div>
           </div>
         </div>
