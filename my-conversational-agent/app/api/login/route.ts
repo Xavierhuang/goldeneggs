@@ -27,6 +27,13 @@ export async function POST(request: Request) {
       path: '/',
       maxAge: 60 * 60 * 24, // 1 day
     });
+    response.cookies.set('user_email', email, {
+      httpOnly: false, // so JS can read it
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/',
+      maxAge: 60 * 60 * 24, // 1 day
+    });
 
     return response;
   } catch (error) {

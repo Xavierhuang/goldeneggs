@@ -37,7 +37,7 @@ export function AuthBar() {
   const handleLogin = () => {
     if (typeof document !== 'undefined') {
       const email = document.cookie.split('; ').find(row => row.startsWith('user_email='))?.split('=')[1];
-      setUserEmail(email || null);
+      setUserEmail(email ? decodeURIComponent(email) : null);
     }
   };
 
