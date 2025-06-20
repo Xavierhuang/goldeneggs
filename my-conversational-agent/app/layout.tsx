@@ -13,19 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Goldeneggs",
-  description: "Goldeneggs is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
+  title: "aitutors",
+  description: "aitutors is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
   openGraph: {
-    title: "Goldeneggs",
-    description: "Goldeneggs is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
-    url: "https://goldeneggs.ai",
-    siteName: "Goldeneggs",
+    title: "aitutors",
+    description: "aitutors is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
+    url: "https://aitutors.ai",
+    siteName: "aitutors",
     images: [
       {
         url: "/logo.png",
         width: 400,
         height: 400,
-        alt: "Goldeneggs Logo"
+        alt: "aitutors Logo"
       }
     ],
     type: "website"

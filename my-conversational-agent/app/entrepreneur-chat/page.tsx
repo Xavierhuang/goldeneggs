@@ -16,8 +16,8 @@ export default function EntrepreneurChat() {
       <div className={'w-full max-w-4xl mx-auto'}>
         <div className="flex items-center justify-between w-full mb-4">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
-            <Image src="/logo.png" alt="goldeneggs.ai logo" width={48} height={48} />
-            <span className="text-2xl font-bold text-[#217a5b]" style={{ fontFamily: 'Avenir Next Arabic, sans-serif', fontWeight: 'bold' }}>goldeneggs.ai</span>
+            <Image src="/logo.png" alt="aitutors logo" width={48} height={48} />
+            <span style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>aitutors</span>
           </Link>
           <AuthBar />
         </div>
@@ -57,7 +57,7 @@ export default function EntrepreneurChat() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center">
             <a href="/terms" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Terms</a>
             <a href="/privacy" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Privacy</a>
-            <span className="text-[#f3eccb] text-base">Copyright Goldeneggs.ai 2025</span>
+            <span className="text-[#f3eccb] text-base">Copyright aitutors.ai 2025</span>
           </div>
         </footer>
       </div>

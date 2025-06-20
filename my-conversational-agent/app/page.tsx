@@ -11,8 +11,8 @@ export default function Home() {
         {/* Logo/site name and AuthBar aligned in a row, logo left, hamburger right */}
         <div className="flex flex-row items-center justify-between mb-4 px-2 w-full">
           <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="goldeneggs.ai logo" width={40} height={40} className="sm:w-12 sm:h-12 w-10 h-10" />
-            <span className="text-xl sm:text-2xl font-bold text-[#217a5b]" style={{ fontFamily: 'Avenir Next Arabic, sans-serif', fontWeight: 'bold' }}>goldeneggs.ai</span>
+            <Image src="/logo.png" alt="aitutors logo" width={40} height={40} className="sm:w-12 sm:h-12 w-10 h-10" />
+            <span style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>aitutors</span>
           </div>
           <AuthBar />
         </div>
@@ -68,12 +68,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Goldeneggs Section */}
+        {/* About aitutors Section */}
         <section className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16 px-2">
           <div className="bg-[#217a5b] rounded-xl p-8 md:p-10 max-w-xl w-full text-left text-[#ffe14d] shadow-lg">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-2">About Goldeneggs <Image src="/Logo without background .png" alt="Goldeneggs logo" width={50} height={50} /></h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-2">About aitutors <Image src="/Logo without background .png" alt="aitutors logo" width={50} height={50} /></h2>
             <p className="text-[#ffe14d] text-base md:text-lg font-normal">
-              At Goldeneggs, we believe in the transformative power of collective intelligence; where every individual's data, insights, and expertise hold inherent value. Inspired by the timeless fable of the golden goose, we recognize that true progress comes not from extraction, but from nurturing and rewarding the source. Today's digital economy thrives on personal data yet rarely compensates or empowers its contributors; while access to mentorship, a proven catalyst for growth, remains unequal. Founded on the principles of fairness, innovation, and reciprocity, Goldeneggs is redefining the relationship between data and value. We ensure individuals are rightfully rewarded for their contributions while democratizing access to knowledge, creating a sustainable ecosystem where intelligence flourishes and benefits all. This is more than a mission, it's a new standard for how the world harnesses human potential.
+              At aitutors, we believe in the transformative power of collective intelligence; where every individual's data, insights, and expertise hold inherent value. Inspired by the timeless fable of the golden egg, we've created a platform that not only harvests these valuable insights but ensures they're shared equitably among all participants. Through principles of fairness, innovation, and reciprocity, aitutors is redefining the relationship between data and value. We ensure individuals are rightfully rewarded for their contributions while democratizing access to knowledge, creating a sustainable ecosystem where intelligence flourishes and benefits all. This is more than a mission, it's a new standard for how the world harnesses human potential.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center relative mt-8 md:mt-0">
@@ -106,7 +106,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center">
           <a href="/terms" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Terms</a>
           <a href="/privacy" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Privacy</a>
-          <span className="text-[#f3eccb] text-base">Copyright Goldeneggs.ai 2025</span>
+          <span className="text-[#f3eccb] text-base">Copyright aitutors.ai 2025</span>
         </div>
       </footer>
     </main>

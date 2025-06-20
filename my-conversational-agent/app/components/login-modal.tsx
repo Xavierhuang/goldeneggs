@@ -53,7 +53,7 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
         </button>
         {/* Logo */}
         <div className="flex flex-col items-center mb-4 w-full">
-          <Image src="/logo.png" alt="goldeneggs logo" width={70} height={70} className="mb-2" />
+          <Image src="/logo.png" alt="aitutors logo" width={70} height={70} className="mb-2" />
           <h2 className="text-4xl font-bold mb-6 text-[#ffe14d] text-center">Login</h2>
         </div>
         <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4">
