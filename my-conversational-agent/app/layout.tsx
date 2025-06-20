@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "aitutors",
     description: "aitutors is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
-    url: "https://aitutors.ai",
+    url: "https://aitutors.io",
     siteName: "aitutors",
     images: [
       {

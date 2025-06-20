@@ -14,13 +14,14 @@ export default function EntrepreneurChat() {
       {/* Removed the overlay modal */}
       {/* Main Content */}
       <div className={'w-full max-w-4xl mx-auto'}>
-        <div className="flex items-center justify-between w-full mb-4">
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
-            <Image src="/logo.png" alt="aitutors logo" width={48} height={48} />
-            <span style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>aitutors</span>
-          </Link>
-          <AuthBar />
-        </div>
+        <header className="w-full bg-white shadow-md">
+          <div className="flex items-center justify-between w-full mb-4">
+            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
+              <Image src="/logo.png" alt="aitutors logo" width={150} height={50} className="h-12 w-auto" />
+            </Link>
+            <AuthBar />
+          </div>
+        </header>
         <div className="flex flex-col items-center w-full mt-4 mb-8">
           <div className="relative flex flex-col items-center w-full">
             <Image src="/egg-chicken.png" alt="Goose" width={60} height={60} className="absolute -top-10 left-1/2 -translate-x-1/2" />
@@ -57,7 +58,7 @@ export default function EntrepreneurChat() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center">
             <a href="/terms" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Terms</a>
             <a href="/privacy" className="underline text-[#ffe14d] hover:text-yellow-300 text-base">Privacy</a>
-            <span className="text-[#f3eccb] text-base">Copyright aitutors.ai 2025</span>
+            <span className="text-[#f3eccb] text-base">Copyright aitutors.io 2025</span>
           </div>
         </footer>
       </div>

@@ -43,18 +43,21 @@ export default function PrivacyPage() {
               </ul>
             </li>
             <li>
-              <span className="font-bold">Your Choices</span>
+              <span className="font-bold">Your Rights and Choices</span>
               <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
                 <li>You may opt out of marketing emails at any time by following the unsubscribe link in our emails.</li>
-                <li>You may request deletion of your data by contacting us at <a href="mailto:support@aitutors.ai" className="underline text-[#ffe14d]">support@aitutors.ai</a>.</li>
+                <li>You may request deletion of your data by contacting us at <a href="mailto:support@aitutors.io" className="underline text-[#ffe14d]">support@aitutors.io</a>.</li>
               </ul>
             </li>
             <li>
               <span className="font-bold">Changes to This Policy</span>
               <p className="ml-6">We may update this Privacy Policy from time to time. Changes will be effective upon posting. Continued use of the Platform after changes are posted constitutes your acceptance of the revised Policy.</p>
             </li>
+            <li>
+              <span className="font-bold">Contact Us</span>
+              <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@aitutors.io" className="underline text-[#ffe14d]">support@aitutors.io</a>.</p>
+            </li>
           </ol>
-          <p className="mt-8">If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@aitutors.ai" className="underline text-[#ffe14d]">support@aitutors.ai</a>.</p>
           <div className="mt-8">
             <Link href="/" className="text-[#ffe14d] underline font-semibold">&larr; Back to Home</Link>
           </div>

@@ -80,7 +80,7 @@ export default function TermsPage() {
             </li>
             <li>
               <span className="font-bold">Contact Us</span>
-              <p className="ml-6">For any questions or concerns about these Terms, please contact us at: <a href="mailto:support@aitutors.ai" className="underline text-[#ffe14d]">support@aitutors.ai</a></p>
+              <p className="ml-6">For any questions or concerns about these Terms, please contact us at: <a href="mailto:support@aitutors.io" className="underline text-[#ffe14d]">support@aitutors.io</a></p>
             </li>
           </ol>
           <p className="mt-8">By using aitutors, you acknowledge that you have read, understood, and agree to be bound by these Terms.</p>
