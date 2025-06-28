@@ -66,7 +66,8 @@ export function AuthBar() {
               onClick={() => {
                 if (!userEmail) setShowLoginModal(true);
               }}
-              className="px-3 py-1 sm:px-4 sm:py-2 bg-[#217a5b] text-white rounded-full mr-2 text-sm sm:text-base"
+              className="px-3 py-1 sm:px-4 sm:py-2 rounded-full mr-2 text-sm sm:text-base"
+              style={{ background: 'var(--primary-gradient)', color: 'var(--button-text)', border: 'none' }}
             >
               Log in
             </button>
@@ -74,7 +75,8 @@ export function AuthBar() {
               onClick={() => {
                 if (!userEmail) setShowSignupModal(true);
               }}
-              className="px-3 py-1 sm:px-4 sm:py-2 text-black rounded-full bg-white text-sm sm:text-base"
+              className="px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base"
+              style={{ background: 'transparent', color: 'var(--primary-color)', border: '2px solid var(--primary-color)' }}
             >
               Sign up
             </button>
@@ -108,13 +110,15 @@ export function AuthBar() {
               <>
                 <button
                   onClick={() => { setShowLoginModal(true); setShowMobileMenu(false); }}
-                  className="px-4 py-2 text-left text-black hover:bg-gray-100 w-full"
+                  className="px-4 py-2 text-left w-full rounded-full mb-2"
+                  style={{ background: 'var(--primary-gradient)', color: 'var(--button-text)', border: 'none' }}
                 >
                   Log in
                 </button>
                 <button
                   onClick={() => { setShowSignupModal(true); setShowMobileMenu(false); }}
-                  className="px-4 py-2 text-left text-black hover:bg-gray-100 w-full"
+                  className="px-4 py-2 text-left w-full rounded-full"
+                  style={{ background: 'transparent', color: 'var(--primary-color)', border: '2px solid var(--primary-color)' }}
                 >
                   Sign up
                 </button>
