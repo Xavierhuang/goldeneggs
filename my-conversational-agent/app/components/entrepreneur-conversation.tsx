@@ -227,7 +227,7 @@ export function EntrepreneurConversation() {
       
       {/* Chat Interface */}
       <div className="w-full mb-4 overflow-hidden rounded-xl border border-gray-200">
-        <div className="bg-[#217a5b] p-3 sm:p-4 flex items-center justify-between text-white">
+        <div className="p-3 sm:p-4 flex items-center justify-between" style={{ background: 'var(--accent)', color: 'var(--primary-color-light)' }}>
           <div className="flex items-center">
             <div className="relative w-[3.3rem] h-[3.3rem] sm:w-[3.85rem] sm:h-[3.85rem] rounded-full overflow-hidden mr-3 border-2 border-white shadow-sm">
               <Image 
@@ -239,7 +239,7 @@ export function EntrepreneurConversation() {
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-semibold">Prof. Jeremy Kagan</h3>
-              <p className="text-xs text-green-100">NYU Stern, Entrepreneurship</p>
+              <p className="text-xs" style={{ color: 'var(--primary-color-light)' }}>NYU Stern, Entrepreneurship</p>
             </div>
           </div>
           
@@ -250,8 +250,11 @@ export function EntrepreneurConversation() {
               className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-md shadow-sm ${
                 conversation.status === 'connected' || isLoading
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-white text-[#217a5b] hover:bg-[#e6f4ef] border border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#217a5b]'
+                  : ''
               }`}
+              style={conversation.status === 'connected' || isLoading
+                ? { background: 'var(--accent)', color: 'var(--primary-color-light)', opacity: 0.6, cursor: 'not-allowed' }
+                : { background: 'var(--primary-gradient)', color: 'var(--button-text)', border: 'none' }}
             >
               {isLoading ? 'Connecting...' : 'Start Conversation'}
             </button>
@@ -270,19 +273,19 @@ export function EntrepreneurConversation() {
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center p-4">
               <img src="/egg-dot.png" alt="Golden Egg" className="w-6 h-6 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-[#217a5b] mb-6">Ask Prof. Kagan about startup strategies, business models, product-market fit, or how to launch your venture with confidence.</h3>
+              <h3 className="text-lg font-medium mb-6" style={{ color: 'var(--primary-color-light)' }}>Ask Prof. Kagan about startup strategies, business models, product-market fit, or how to launch your venture with confidence.</h3>
               <button
                 onClick={startConversation}
                 disabled={conversation.status === 'connected' || isLoading}
-                className={`flex items-center justify-center gap-2 px-8 py-4 mb-4 text-xl font-bold rounded-full shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400
-                  ${conversation.status === 'connected' || isLoading
-                    ? 'bg-yellow-200 text-[#217a5b] cursor-not-allowed'
-                    : 'bg-yellow-300 text-[#217a5b] hover:bg-yellow-400'}`}
+                className="flex items-center justify-center gap-2 px-8 py-4 mb-4 text-xl font-bold rounded-full shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style={conversation.status === 'connected' || isLoading
+                  ? { background: 'var(--accent)', color: 'var(--primary-color-light)', opacity: 0.6, cursor: 'not-allowed' }
+                  : { background: 'var(--primary-gradient)', color: 'var(--button-text)', border: 'none' }}
               >
                 Start Conversation
                 <Image src="/speaker.png" alt="Speaker" width={28} height={28} />
               </button>
-              <p className="text-[#217a5b] text-lg">Free for 5 Minutes</p>
+              <p className="text-lg" style={{ color: 'var(--primary-color-light)' }}>Free for 5 Minutes</p>
             </div>
           ) : (
             messages.map((msg) => (
@@ -295,15 +298,17 @@ export function EntrepreneurConversation() {
                 <div
                   className={`max-w-[85%] rounded-lg p-3 ${
                     msg.sender === 'user'
-                      ? 'bg-green-600 text-white'
-                      : 'bg-white border border-gray-200 text-gray-800'
+                      ? ''
+                      : ''
                   }`}
+                  style={msg.sender === 'user'
+                    ? { background: 'var(--primary-gradient)', color: 'var(--button-text)' }
+                    : { background: 'var(--accent)', color: 'var(--primary-color-light)', border: '1px solid var(--primary-color)' }}
                 >
                   <p className="whitespace-pre-wrap break-words">{msg.text}</p>
                   <p
-                    className={`text-xs mt-1 ${
-                      msg.sender === 'user' ? 'text-green-200' : 'text-gray-400'
-                    }`}
+                    className="text-xs mt-1"
+                    style={msg.sender === 'user' ? { color: 'var(--primary-color-light)' } : { color: 'var(--primary-color-light)', opacity: 0.7 }}
                   >
                     {msg.timestamp.toLocaleTimeString([], {
                       hour: '2-digit',

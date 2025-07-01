@@ -42,11 +42,11 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-[#28776e] rounded-2xl p-10 pt-24 max-w-lg w-full mx-4 flex flex-col items-center relative" style={{ minWidth: 370 }}>
+      <div className="rounded-2xl p-10 pt-24 max-w-lg w-full mx-4 flex flex-col items-center relative" style={{ minWidth: 370, background: 'var(--accent)', color: 'var(--primary-color-light)' }}>
         {/* Close button - must be first child for top right positioning */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-yellow-300 focus:outline-none z-10"
+          className="absolute top-4 right-4 text-white text-2xl font-bold hover:opacity-80 focus:outline-none z-10"
           aria-label="Close"
         >
           &times;
@@ -54,7 +54,7 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
         {/* Logo */}
         <div className="flex flex-col items-center mb-4 w-full">
           <Image src="/logo.png" alt="aitutors logo" width={70} height={70} className="mb-2" />
-          <h2 className="text-4xl font-bold mb-6 text-[#ffe14d] text-center">Login</h2>
+          <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: 'var(--primary-color-light)' }}>Login</h2>
         </div>
         <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4">
           <div className="w-full relative flex items-center">
@@ -63,7 +63,7 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="Enter your email address"
-              className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
+              className="w-full px-4 py-3 rounded-lg border bg-[var(--background)] placeholder-gray-400 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] text-lg"
               required
             />
             {/* Goose image */}
@@ -76,14 +76,17 @@ export function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
             value={password}
             onChange={e => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-lg"
+            className="w-full px-4 py-3 rounded-lg border bg-[var(--background)] placeholder-gray-400 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] text-lg"
             required
           />
           {error && <div className="text-red-500 mb-2 w-full text-center">{error}</div>}
           <button
             type="submit"
             disabled={isSubmitting || !email || !password}
-            className="w-1/2 mx-auto bg-[#ffe14d] text-[#217a5b] font-semibold rounded-full px-8 py-2 shadow hover:bg-yellow-300 transition text-xl mt-4 disabled:opacity-60"
+            className="w-1/2 mx-auto font-semibold rounded-full px-8 py-2 shadow transition text-xl mt-4 disabled:opacity-60"
+            style={isSubmitting || !email || !password
+              ? { background: 'var(--accent)', color: 'var(--primary-color-light)', opacity: 0.6, cursor: 'not-allowed' }
+              : { background: 'var(--primary-gradient)', color: 'var(--button-text)', border: 'none' }}
           >
             {isSubmitting ? 'Logging in...' : 'Log in'}
           </button>

@@ -12,7 +12,8 @@ export default function Home() {
           <div className="flex flex-row items-center justify-between mb-4 px-2 w-full">
             <div className="flex items-center gap-2">
              <a href="/" className="flex items-center gap-2">
-                <Image src="/logo.png" alt="aitutors logo" width={150} height={50} className="h-10 sm:h-12 w-auto" />
+                <Image src="/logo.png" alt="aitutors logo" width={50} height={50} className="h-10 sm:h-12 w-auto" />
+                <span className="font-bold text-2xl sm:text-3xl tracking-tight" style={{ color: 'var(--primary-color-light)', letterSpacing: '-0.03em' }}>AItutors</span>
              </a>
             </div>
             <AuthBar />
@@ -39,9 +40,9 @@ export default function Home() {
                   <Link href="/entrepreneur-chat" className="inline-block font-semibold rounded-md px-8 py-3 shadow transition" style={{ background: 'var(--primary-gradient)', color: 'var(--button-text)' }}>
                     Try it for Free
                   </Link>
-                  <button className="inline-block font-semibold rounded-md px-8 py-3 border border-blue-400 text-blue-200 bg-transparent transition" style={{ color: 'var(--primary-color-light)' }}>
+                  <Link href="/experts" className="inline-block font-semibold rounded-md px-8 py-3 border border-blue-400 text-blue-200 bg-transparent transition" style={{ color: 'var(--primary-color-light)' }}>
                     Learn More
-                  </button>
+                  </Link>
                 </div>
               </div>
               {/* Right: Video */}
@@ -49,6 +50,8 @@ export default function Home() {
                 <video
                   src="/demovideo.mp4"
                   controls
+                  autoPlay
+                  muted
                   className="rounded-2xl shadow-lg w-full max-w-md md:max-w-lg"
                   style={{ background: '#223047' }}
                 />
