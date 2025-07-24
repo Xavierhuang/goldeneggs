@@ -208,7 +208,7 @@ export function LyndsayConversation() {
           <div className="flex items-center">
             <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 border-2 border-white shadow-sm">
               <Image 
-                src="/images/Lyndsay.png" 
+                src="/images/Lyndsayphoto.jpg" 
                 alt="Lyndsay" 
                 fill
                 className="object-cover" 

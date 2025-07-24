@@ -54,10 +54,10 @@ const experts = [
   },
   {
     name: 'Lyndsay',
-    specialty: 'Personal Growth & Mindfulness',
-    image: '/images/Lyndsay.png',
+    specialty: 'Spanish Teacher · Personal Growth & Language Learning',
+    image: '/images/Lyndsayphoto.jpg',
     chatLink: '/lyndsay-chat',
-    description: 'Mindfulness, self-improvement, and personal growth guidance.'
+    description: 'Practice speaking, grammar, and vocabulary with a friendly Spanish teacher—perfect for beginners to advanced learners.'
   },
 ];
 
