@@ -52,6 +52,13 @@ const experts = [
     chatLink: '/storybook',
     description: 'Interactive story time and learning for kids.'
   },
+  {
+    name: 'Lyndsay',
+    specialty: 'Personal Growth & Mindfulness',
+    image: '/images/Lyndsay.png',
+    chatLink: '/lyndsay-chat',
+    description: 'Mindfulness, self-improvement, and personal growth guidance.'
+  },
 ];
 
 export default function ExpertsPage() {
