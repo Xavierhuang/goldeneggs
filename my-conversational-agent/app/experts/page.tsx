@@ -53,7 +53,7 @@ const experts = [
     description: 'Interactive story time and learning for kids.'
   },
   {
-    name: 'Lyndsay',
+    name: 'Spanish Teacher',
     specialty: 'Spanish Teacher · Personal Growth & Language Learning',
     image: '/images/Lyndsayphoto.jpg',
     chatLink: '/lyndsay-chat',
