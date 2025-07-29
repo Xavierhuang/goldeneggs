@@ -17,8 +17,8 @@ export default function EntrepreneurChat() {
         <header className="w-full bg-[var(--accent)] shadow-md">
           <div className="flex items-center justify-between w-full mb-4">
             <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
-              <Image src="/logo.png" alt="aitutors logo" width={50} height={50} className="h-12 w-auto" />
-              <span className="font-bold text-2xl sm:text-3xl tracking-tight" style={{ color: 'var(--primary-color-light)', letterSpacing: '-0.03em' }}>AItutors</span>
+              <Image src="/logo.png" alt="XL AI logo" width={50} height={50} className="h-12 w-auto" />
+              <span className="font-bold text-2xl sm:text-3xl tracking-tight" style={{ color: 'var(--primary-color-light)', letterSpacing: '-0.03em' }}>XL AI</span>
             </Link>
             <AuthBar />
           </div>
@@ -59,7 +59,7 @@ export default function EntrepreneurChat() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center">
             <a href="/terms" className="underline text-base" style={{ color: 'var(--primary-color-light)' }}>Terms</a>
             <a href="/privacy" className="underline text-base" style={{ color: 'var(--primary-color-light)' }}>Privacy</a>
-            <span className="text-base">Copyright aitutors.io 2025</span>
+            <span className="text-base">Copyright XL AI 2025</span>
           </div>
         </footer>
       </div>

@@ -13,19 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "aitutors",
-  description: "aitutors is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
+  title: "XL AI",
+  description: "XL AI is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
   openGraph: {
-    title: "aitutors",
-    description: "aitutors is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
+    title: "XL AI",
+    description: "XL AI is an AI-powered coaching platform for personal and professional growth, connecting you with expert advice and mentorship on demand.",
     url: "https://aitutors.io",
-    siteName: "aitutors",
+    siteName: "XL AI",
     images: [
       {
         url: "/logo.png",
         width: 400,
         height: 400,
-        alt: "aitutors Logo"
+        alt: "XL AI Logo"
       }
     ],
     type: "website"

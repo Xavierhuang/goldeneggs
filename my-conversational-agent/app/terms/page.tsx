@@ -7,18 +7,18 @@ export default function TermsPage() {
       <div className="w-full max-w-5xl bg-transparent rounded-3xl p-6 md:p-12 flex flex-col items-center relative">
         {/* Header row */}
         <div className="flex flex-row justify-between items-start w-full mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#ffe14d]">aitutors Terms of Service</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-[#ffe14d]">XL AI Terms of Service</h1>
           <div className="flex items-center gap-4">
-            <Image src="/logo.png" alt="aitutors logo" width={90} height={90} />
+            <Image src="/logo.png" alt="XL AI logo" width={90} height={90} />
             <div className="flex items-center gap-2">
-              <Image src="/logo.png" alt="aitutors logo" width={50} height={50} />
-              <span className="text-2xl font-bold text-[#217a5b]">aitutors</span>
+              <Image src="/logo.png" alt="XL AI logo" width={50} height={50} />
+              <span className="text-2xl font-bold text-[#217a5b]">XL AI</span>
             </div>
           </div>
         </div>
         <div className="text-[#f3eccb] text-base md:text-lg w-full max-w-3xl mx-auto space-y-6" style={{lineHeight: '1.7'}}>
           <p className="font-semibold">Effective Date: Jan 2025</p>
-          <p>Welcome to aitutors ("we", "us", "our"), an AI-powered coaching platform designed to support users ("you", "your") in personal and professional development. By accessing or using aitutors services, websites, or applications (collectively, the "Platform"), you agree to be bound by these Terms of Service ("Terms").</p>
+          <p>Welcome to XL AI ("we", "us", "our"), an AI-powered coaching platform designed to support users ("you", "your") in personal and professional development. By accessing or using XL AI services, websites, or applications (collectively, the "Platform"), you agree to be bound by these Terms of Service ("Terms").</p>
           <p>If you do not agree to these Terms, do not access or use the Platform.</p>
           <ol className="list-decimal list-inside space-y-4">
             <li>
@@ -45,7 +45,7 @@ export default function TermsPage() {
             <li>
               <span className="font-bold">Limitation of Liability</span>
               <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
-                <li>To the fullest extent permitted by law, aitutors and its affiliates, officers, employees, agents, partners, and licensors shall not be liable for any indirect, incidental, special, consequential, or punitive damages.</li>
+                <li>To the fullest extent permitted by law, XL AI and its affiliates, officers, employees, agents, partners, and licensors shall not be liable for any indirect, incidental, special, consequential, or punitive damages.</li>
                 <li>We are not liable for any loss of profits, data, or goodwill, or for any decision made or action taken by you or anyone else based on content from the Platform.</li>
                 <li>Our total liability to you for all claims is limited to the greater of: (a) the amount you paid us (if any) in the 6 months before the claim, or (b) $50 USD.</li>
               </ul>
@@ -60,7 +60,7 @@ export default function TermsPage() {
             </li>
             <li>
               <span className="font-bold">Intellectual Property</span>
-              <p className="ml-6">All content, algorithms, software, and branding associated with aitutors are owned or licensed by us and protected by intellectual property laws. You may not use our content or marks without prior written consent.</p>
+              <p className="ml-6">All content, algorithms, software, and branding associated with XL AI are owned or licensed by us and protected by intellectual property laws. You may not use our content or marks without prior written consent.</p>
             </li>
             <li>
               <span className="font-bold">Privacy</span>
@@ -83,7 +83,7 @@ export default function TermsPage() {
               <p className="ml-6">For any questions or concerns about these Terms, please contact us at: <a href="mailto:support@aitutors.io" className="underline text-[#ffe14d]">support@aitutors.io</a></p>
             </li>
           </ol>
-          <p className="mt-8">By using aitutors, you acknowledge that you have read, understood, and agree to be bound by these Terms.</p>
+          <p className="mt-8">By using XL AI, you acknowledge that you have read, understood, and agree to be bound by these Terms.</p>
         </div>
       </div>
     </div>

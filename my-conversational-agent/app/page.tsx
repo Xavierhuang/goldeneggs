@@ -12,8 +12,8 @@ export default function Home() {
           <div className="flex flex-row items-center justify-between mb-4 px-2 w-full">
             <div className="flex items-center gap-2">
              <a href="/" className="flex items-center gap-2">
-                <Image src="/logo.png" alt="aitutors logo" width={50} height={50} className="h-10 sm:h-12 w-auto" />
-                <span className="font-bold text-2xl sm:text-3xl tracking-tight" style={{ color: 'var(--primary-color-light)', letterSpacing: '-0.03em' }}>AItutors</span>
+                <Image src="/logo.png" alt="XL AI logo" width={50} height={50} className="h-10 sm:h-12 w-auto" />
+                <span className="font-bold text-2xl sm:text-3xl tracking-tight" style={{ color: 'var(--primary-color-light)', letterSpacing: '-0.03em' }}>XL AI</span>
              </a>
             </div>
             <AuthBar />
@@ -94,12 +94,12 @@ export default function Home() {
             </div>
           </section>
 
-          {/* About aitutors Section */}
+          {/* About XL AI Section */}
           <section className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16 px-2">
             <div className="rounded-xl p-8 md:p-10 max-w-xl w-full text-left shadow-lg" style={{ background: 'var(--accent)', color: 'var(--primary-color-light)' }}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-2">About aitutors <Image src="/Logo without background .png" alt="aitutors logo" width={50} height={50} /></h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-2">About XL AI <Image src="/Logo without background .png" alt="XL AI logo" width={50} height={50} /></h2>
               <p className="text-base md:text-lg font-normal">
-                At aitutors, we believe in the transformative power of collective intelligence; where every individual's data, insights, and expertise hold inherent value. Inspired by the timeless fable of the golden egg, we've created a platform that not only harvests these valuable insights but ensures they're shared equitably among all participants. Through principles of fairness, innovation, and reciprocity, aitutors is redefining the relationship between data and value. We ensure individuals are rightfully rewarded for their contributions while democratizing access to knowledge, creating a sustainable ecosystem where intelligence flourishes and benefits all. This is more than a mission, it's a new standard for how the world harnesses human potential.
+                At XL AI, we believe in the transformative power of collective intelligence; where every individual's data, insights, and expertise hold inherent value. Inspired by the timeless fable of the golden egg, we've created a platform that embodies the principles of fairness, innovation, and reciprocity, XL AI is redefining the relationship between data and value. We ensure individuals are rightfully rewarded for their contributions while democratizing access to knowledge, creating a sustainable ecosystem that benefits everyone.
               </p>
             </div>
             <div className="flex flex-col items-center justify-center relative mt-8 md:mt-0">
@@ -134,7 +134,7 @@ export default function Home() {
             <a href="/privacy" className="underline text-base" style={{ color: 'var(--primary-color-light)' }}>Privacy</a>
           </div>
           <div className="mt-4 text-sm">
-            Copyright aitutors.io 2025
+            Copyright XL AI 2025
           </div>
         </footer>
       </main>

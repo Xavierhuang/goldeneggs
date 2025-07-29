@@ -7,18 +7,18 @@ export default function PrivacyPage() {
     <div className="min-h-screen w-full bg-gradient-to-b from-[#215c53] to-[#28776e] flex flex-col items-center py-10 px-2">
       <div className="w-full max-w-5xl bg-transparent rounded-3xl p-6 md:p-12 flex flex-col items-center relative">
         <div className="flex flex-row justify-between items-start w-full mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#ffe14d]">aitutors Privacy Policy</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-[#ffe14d]">XL AI Privacy Policy</h1>
           <div className="flex items-center gap-4">
-            <Image src="/logo.png" alt="aitutors logo" width={90} height={90} />
+            <Image src="/logo.png" alt="XL AI logo" width={90} height={90} />
             <div className="flex items-center gap-2">
-              <Image src="/logo.png" alt="aitutors logo" width={50} height={50} />
-              <span className="text-2xl font-bold text-[#217a5b]">aitutors</span>
+              <Image src="/logo.png" alt="XL AI logo" width={50} height={50} />
+              <span className="text-2xl font-bold text-[#217a5b]">XL AI</span>
             </div>
           </div>
         </div>
         <div className="text-[#f3eccb] text-base md:text-lg w-full max-w-3xl mx-auto space-y-6" style={{lineHeight: '1.7'}}>
           <p className="font-semibold">Effective Date: Jan 2025</p>
-          <p>This Privacy Policy explains how aitutors ("we", "us", "our") collects, uses, and protects your information when you use our platform.</p>
+          <p>This Privacy Policy explains how XL AI ("we", "us", "our") collects, uses, and protects your information when you use our platform.</p>
           <ol className="list-decimal list-inside space-y-4">
             <li>
               <span className="font-bold">Information We Collect</span>
